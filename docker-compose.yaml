@@ -1,0 +1,11 @@
+version: "2"
+service:
+  factorio:
+    image: chpio/factorio-server
+    restart: on-failure
+    volumes:
+      - "./data-factorio:/data/factorio"
+    ports:
+      - "34197:34197/udp"
+    command: >
+      --start-server world.zip

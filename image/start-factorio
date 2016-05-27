@@ -1,0 +1,9 @@
+#!/bin/sh -ex
+
+if [ ! -f /data/factorio/config.ini ]; then
+	cp /opt/factorio/config.ini /data/factorio
+fi
+
+chown -R factorio:factorio /data/factorio
+
+exec gosu factorio:factorio factorio -c /data/factorio/config.ini $@
