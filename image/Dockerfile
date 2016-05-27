@@ -1,5 +1,7 @@
 FROM chpio/gosu:jessie
 
+COPY comodo.cert /tmp
+
 RUN { set -ex; \
 	VERSION="0.12.33"; \
 
@@ -13,7 +15,11 @@ RUN { set -ex; \
 
 	# download
 	cd /tmp; \
-	curl -fsSL "https://www.factorio.com/get-download/$VERSION/headless/linux64" | tar -xzf -; \
+	curl \
+		-fsSL \
+		--cacert "/tmp/comodo.cert" \
+		"https://factorio.com/get-download/$VERSION/headless/linux64" \
+	| tar -xzf -; \
 
 	# install
 	cd /tmp/factorio; \
