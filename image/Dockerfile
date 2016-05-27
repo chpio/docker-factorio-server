@@ -12,8 +12,8 @@ RUN { set -ex; \
 	apt-get install --no-install-recommends -y $BUILD_DEPS; \
 
 	# download
-	curl -fsSL "https://www.factorio.com/get-download/$VERSION/headless/linux64" \
-		| tar -xzf --directory /tmp -; \
+	cd /tmp; \
+	curl -fsSL "https://www.factorio.com/get-download/$VERSION/headless/linux64" | tar -xzf -; \
 
 	# install
 	cd /tmp/factorio; \
