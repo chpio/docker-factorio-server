@@ -9,5 +9,5 @@ docker-compose run --rm factorio --create world.zip
 ## Start the server
 
 ```sh
-docker-compose up -d
+docker-compose up -d -t 60
 ```
